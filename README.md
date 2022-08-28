@@ -1,70 +1,19 @@
-# Getting Started with Create React App
+# learn react query
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+쓰는 이유: 리엑트에서 비동기를 사용을 더 편리하게 해주는 패키지이다
 
-## Available Scripts
+react query의 사용법중 가장 기본되는 useQuery를 쓰는 법에 대해 다뤄보았다
 
-In the project directory, you can run:
+### Characters.jsx
 
-### `npm start`
+중요 1
+keepPreviousData: page 값이 바뀌면서 key가 달라지면 전에 가져왔던 데이터들은 버려진다
+데이터를 버리지 않고 cashe에 저장해서 다시 쓸수 있도록 하고 싶으면
+keepPreviousData를 true로 설정해준다
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+중요 2
+keepPreviousData를 사용하면 유저가 다음 데이터를 다시 불러오는 요청을 할 경우,
+데이터 다운받는 속도가 느려서 이전 데이터가 웹상에 계속 노출 되어 있을 수가 있다
+그럴때 유저가 함부러 다른 기능들을 다루지 못하게 할 수 있다
+isPreviousData를 이용하면 아직 data가 previous 상태일때 true를 반환하게 된다
+아래의 next button 처럼 응용하여 사용할 수 있다
